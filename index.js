@@ -9,6 +9,7 @@ const postsRoute = require("./routes/posts");
 const searchRoute = require("./routes/search");
 const multer = require("multer");
 const path = require("path");
+const cors = require('cors');
 
 const app = express();
 dotenv.config();
@@ -19,6 +20,7 @@ mongoose.connect(process.env.MONGO_URL, ()=>{
   console.log(err);
 });
 
+app.use(cors());
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 // middleware
